@@ -1,0 +1,36 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Section"
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Commodo magna reprehenderit enim aute duis elit dolor. Ad sit ut cupidatat minim pariatur minim fugiat dolor ut ad ea do. Fugiat labore ut enim duis aute velit deserunt adipisicing ullamco cillum eiusmod."
+						}
+					}
+				]
+			},
+			"buy_button_text": {
+				"__TYPE__": "FieldContent",
+				"value": "till",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
