@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { Content, isFilled } from "@prismicio/client";
 import {
@@ -9,6 +11,9 @@ import { Bounded } from "@/components/Bounded";
 import { FadeIn } from "@/components/FadeIn";
 import { Color } from "three";
 import clsx from "clsx";
+import { Canvas } from "@react-three/fiber";
+import { Switch } from "@/components/Switch";
+import { Stage } from "@react-three/drei";
 
 /**
  * Props for `SwitchPlayground`.
@@ -32,7 +37,7 @@ const SwitchPlayground: FC<SwitchPlaygroundProps> = ({ slice }) => {
           <PrismicText field={slice.primary.heading} />
         </h2>
 
-        <div className="mb-6 max-w-4xl text-4xl text-pretty">
+        <div className="mb-6 max-w-4xl text-xl text-pretty">
           <PrismicRichText field={slice.primary.description} />
         </div>
 
@@ -74,6 +79,20 @@ const SharedCanvas = ({ color }: SharedCanvasProps) => {
     <div className="group relative min-h-96 overflow-hidden rounded-3xl select-none">
       {/*Text Button*/}
       {/*Canvas*/}
+      <Canvas camera={{ position: [1.5, 2, 0], fov: 7 }}>
+        <Stage
+          adjustCamera
+          intensity={0.5}
+          shadows={"contact"}
+          environment="city"
+        >
+          <Switch
+            rotation={[0, Math.PI / 4, 0]}
+            color={colorName}
+            hexColor={hexColor || ""}
+          />
+        </Stage>
+      </Canvas>
       <div
         className={clsx(
           "font-black-slanted absolute inset-0 -z-10 grid place-items-center text-8xl uppercase",
@@ -86,7 +105,18 @@ const SharedCanvas = ({ color }: SharedCanvasProps) => {
             y="50%"
             dominantBaseline="middle"
             textAnchor="middle"
-          ></text>
+            fontSize={18}
+            className="font-black-slanted fill-white/30 uppercase mix-blend-overlay group-hover:fill-white/100 motion-safe:transition-all motion-safe:duration-700"
+          >
+            {Array.from({ length: 8 }, (_, i) => (
+              <tspan key={i} x={`${(i + 1) * 10}%`} dy={i === 0 ? -40 : 14}>
+                {colorName}
+                {colorName}
+                {colorName}
+                {colorName}
+              </tspan>
+            ))}
+          </text>
         </svg>
       </div>
     </div>
