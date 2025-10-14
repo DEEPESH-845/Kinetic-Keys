@@ -20,11 +20,12 @@ const Marquee: FC<MarqueeProps> = ({ slice }) => {
           <div className="font-bold-slanted px-14 text-[180px] leading-none text-gray-400/80 uppercase [text-box:trim-both_cap_alphabetic] md:text-[260px]">
             {item.text}
           </div>
-          <LogoMark className="size-34 flex-shrink-0" />
+          <LogoMark className="size-36 flex-shrink-0" />
         </Fragment>
       ))}
     </div>
   );
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -43,6 +44,7 @@ const Marquee: FC<MarqueeProps> = ({ slice }) => {
                 "[animation-direction:reverse]",
             )}
           >
+            {/* Content to duplicate */}
             <MarqueeContent />
             <MarqueeContent />
             <MarqueeContent />
