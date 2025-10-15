@@ -13,7 +13,8 @@ export function Footer() {
             <span className="sr-only">Nimbus home</span>
           </Link>
           <p className="mt-4 text-center text-sm md:text-left">
-            © {new Date().getFullYear()} Nimbus Keyboards. All rights reserved.
+            © {new Date().getFullYear()} Kinetic Keyboards. All rights
+            reserved.
           </p>
         </div>
         <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 md:justify-end">
