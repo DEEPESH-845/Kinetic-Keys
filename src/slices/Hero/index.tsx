@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Bounded } from "@/components/Bounded";
@@ -13,6 +13,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Loader } from "@/components/Loader";
 import { useProgress } from "@react-three/drei";
 import clsx from "clsx";
+import { button } from "leva";
+import { checkout } from "@/checkout";
 
 gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
 
@@ -94,6 +96,14 @@ const Hero: FC<HeroProps> = ({ slice }) => {
     });
   });
 
+  const button = useRef<HTMLButtonElement>(null);
+
+  async function handleCheckout() {
+    if (button.current) button.current.disabled = true;
+    await checkout();
+    if (button.current) button.current.disabled = false;
+  }
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -140,7 +150,10 @@ const Hero: FC<HeroProps> = ({ slice }) => {
               }}
             />
           </div>
-          <button className="font-bold-slanted group flex w-fit cursor-pointer items-center gap-1 rounded bg-[#01A7E1] px-3 py-1 text-2xl uppercase transition disabled:grayscale">
+          <button
+            onClick={handleCheckout}
+            className="font-bold-slanted group flex w-fit cursor-pointer items-center gap-1 rounded bg-[#01A7E1] px-3 py-1 text-2xl uppercase transition disabled:grayscale"
+          >
             {slice.primary.buy_button_text}
             <span className="transition group-hover:translate-x-1">{">"}</span>
           </button>

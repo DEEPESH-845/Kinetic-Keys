@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
+import LenisProvider from "@/components/LenisProvider";
 
 const robotoFlex = Roboto_Flex({
   variable: "--font-roboto-flex",
@@ -25,12 +26,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${robotoFlex.variable} antialiased`}>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-      </body>
-      <PrismicPreview repositoryName={repositoryName} />
+      <LenisProvider>
+        <body className={`${robotoFlex.variable} antialiased`}>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </body>
+        <PrismicPreview repositoryName={repositoryName} />
+      </LenisProvider>
     </html>
   );
 }
